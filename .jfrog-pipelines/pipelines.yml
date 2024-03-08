@@ -1,5 +1,5 @@
 resources:
-  - name: gitRepoRes1
+  - name: gitRepoRes_ben
     type: GitRepo
     configuration:
       gitProvider: log_analytics_splunk_github
@@ -8,7 +8,7 @@ resources:
         include: test
         exclude: master
 
-  - name: image_res
+  - name: image_res_ben
     type: Image
     configuration:
       autoPull: false
@@ -18,7 +18,7 @@ resources:
       imageTag: '4.1.1'
 
 pipelines:
-  - name: dockerbuild_fluentd
+  - name: dockerbuild_fluentd_test
     configuration:
       jfrogCliVersion: 2
     steps:
@@ -31,7 +31,7 @@ pipelines:
           dockerImageName: partnership-pts-observability.jfrog.io/fluentd
           dockerImageTag: '4.1.1'
           inputResources:
-            - name: gitRepoRes1
+            - name: gitRepoRes_ben
           integrations:
             - name: PartnershipArtifactory
 
@@ -44,4 +44,4 @@ pipelines:
           inputSteps:
             - name: docker_build
           outputResources:
-            - name: image_res
+            - name: image_res_ben
