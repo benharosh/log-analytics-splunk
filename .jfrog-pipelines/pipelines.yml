@@ -14,8 +14,8 @@ resources:
       autoPull: false
       sourceRepository: pts-observability
       registry: PartnershipArtifactory
-      imageName: partnership-pts-observability.jfrog.io/fluentd
-      imageTag: '4.1.1'
+      imageName: partnership-public-images.jfrog.io/fluentd
+      imageTag: '4.1'
 
 pipelines:
   - name: dockerbuild_fluentd_test
@@ -28,8 +28,8 @@ pipelines:
           affinityGroup: DockerBuildAndPush
           dockerFileLocation: fluentd-installer
           dockerFileName: Dockerfile.fluentd.sidecar
-          dockerImageName: partnership-pts-observability.jfrog.io/fluentd
-          dockerImageTag: '4.1.1'
+          dockerImageName: partnership-public-images.jfrog.io/fluentd
+          dockerImageTag: '4.1'
           inputResources:
             - name: gitRepoRes_ben
           integrations:
